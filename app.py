@@ -1,6 +1,7 @@
 from flask import Flask, Response, request
 import json
 from libraries.weather import *
+
 app = Flask(__name__)
 @app.route("/weather")   
 def weather():
@@ -19,6 +20,7 @@ def weather():
     else:
         weather = Weather()
         response_data["message"],status_code =  weather.call_weather(city,country) 
+        weather.close_cache()
     return Response(json.dumps(response_data,ensure_ascii=False),
                     status=status_code,
                     mimetype="application/json")
