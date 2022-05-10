@@ -32,7 +32,7 @@ You can see inside the script for the step by step commands.
 
 ## Play app
 
-Use the `shells/run_app.sh` script for setting the environment variables, start redis server and play the application. redis-server configuration files is at `data/`, the cached data will be stored at `data/cache.rdb`. 
+Use the `shells/run_app.sh` script for setting the environment variables, start redis server and play the application. redis-server configuration file is `data/redis.conf`. the cached data will be stored at `data/cache.rdb`. Cached data will be deleted after CACHE_TIME_SECONDS (environment variable) seconds. All environment variables are exported using shell scripts, you can take a look by opening the .sh file at `shells/*.sh`
 
 ```
 bash shells/run_app.sh
@@ -53,8 +53,6 @@ example:
 ```
 http://127.0.0.1:8000/weather?city=guayaquil&country=ec
 ```
-
-Note: cached data will be deleted after CACHE_TIME_SECONDS seconds.
 
 ## Play test
 
