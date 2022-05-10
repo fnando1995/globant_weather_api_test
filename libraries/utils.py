@@ -17,7 +17,6 @@ def convert_unix_to_hour_minute(timestamp):
     try:
         resp = dt.utcfromtimestamp(timestamp).strftime('%H:%M')
     except:
-        print("[Error] Error converting unit to hour_minute")
         resp = "00:00"
     return resp
 
@@ -33,7 +32,6 @@ def convert_unix_to_time(timestamp):
     try:
         resp = dt.utcfromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
     except:
-        print("[Error] Error converting unit to time")
         resp = "0000-00-00 00:00:00"
     return resp
 

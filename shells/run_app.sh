@@ -1,4 +1,7 @@
 #!/bin/bash
+# move to project root dir
+HERE=$(cd $(dirname $BASH_SOURCE) && pwd)
+cd $HERE/../
 # set environmet variables
 export API_ID=1508a9a4840a5574c822d70ca2132032
 export API_URL_FORMAT="https://api.openweathermap.org/data/2.5/weather?q={},{}&appid={}"

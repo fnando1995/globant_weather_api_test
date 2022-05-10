@@ -2,24 +2,29 @@
 
 Create a weather API in Python.
 
-external API: openweathermap
+External API: openweathermap
 
 Consume external API and create a human readable response for city/country pair using a get request.
 
-Note: Globant test.
+Note: Globant test in linux environment.
 
 # install redis
 
-For installing redis follow this simpe [tutorial](https://www.digitalocean.com/community/tutorials/como-instalar-y-proteger-redis-en-ubuntu-18-04-es)
+```
+sudo apt install redis-server
+```
+
+Configurations used from file `data/redis.conf`, no more steps need.
+
 
 # Use
 
 ## Set python environment
 
-use the `bash_create_environ.sh` script for create the python environment.
+use the `shells/create_environ.sh` script for create the python environment.
 
 ```
-bash bash_create_environ.sh
+bash shells/create_environ.sh
 ```
 
 You can see inside the script for the step by step commands.
@@ -27,18 +32,26 @@ You can see inside the script for the step by step commands.
 
 ## Play app
 
-Use the `bash_set_env_and_play.sh` script for setting the environment variables, start redis server and play the application. redis-server configuration files is at `data/`, the cached data will be stored at `data/cache.rdb`. 
+Use the `shells/run_app.sh` script for setting the environment variables, start redis server and play the application. redis-server configuration files is at `data/`, the cached data will be stored at `data/cache.rdb`. 
 
 ```
-bash bash_set_env_and_play.sh
+bash shells/run_app.sh
 ```
 
 Use a normal web browser to check the application:
 
+app url: http://127.0.0.1:8000/weather
+
+arguments:
+
+- city: city as an aphabetical string only
+- country: Country as an alphabetical string in format iso2 only.
+
+
 example:
 
 ```
-http://127.0.0.1:8000/weather?city=bogota&country=co
+http://127.0.0.1:8000/weather?city=guayaquil&country=ec
 ```
 
 Note: cached data will be deleted after CACHE_TIME_SECONDS seconds.
@@ -49,19 +62,19 @@ For make all the tests first initiate the app in one terminal and the test in ot
 
 ```
 # terminal 1
-bash bash_set_env_and_play.sh
+bash shells/run_app.sh
 ```
 
 ```
-# terminal 1
-bash bash_test.sh
+# terminal 2
+bash shells/test.sh
 ```
 
-# Description
+# Notes
 
 ## Some ranges for human readable
 
-Some information about ranges were taken from the following links:
+Some information about ranges were taken from the following links. (ranges are shown in `data/ranges.json`)
 
 #### [Wind speed ranges](https://www.nationalgeographic.org/encyclopedia/beaufort-scale/)
 
